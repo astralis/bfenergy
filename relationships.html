@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Develop Relationships | Bellwether Energy and Technology Forum</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@600;700&display=swap');
+        :root { --bg-color: #FDFDF6; --primary-color: #0A3D62; --accent-color: #00A896; --text-color: #333333; --heading-color: #0A3D62; --border-color: #e0e0e0; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Lato', sans-serif; background-color: var(--bg-color); color: var(--text-color); line-height: 1.7; font-size: 16px; }
+        body.no-scroll { overflow: hidden; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 5rem 2rem; }
+        h1, h3 { font-family: 'Poppins', sans-serif; color: var(--heading-color); font-weight: 700; }
+        h1 { font-size: 3.2rem; line-height: 1.2; text-align: center; }
+        h3 { font-size: 2.2rem; margin-top: 4rem; margin-bottom: 2rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--border-color); }
+        a { color: var(--accent-color); text-decoration: none; font-weight: 600; }
+        a:hover { text-decoration: underline; }
+        .header-container { /* No longer sticky */ }
+        .main-header { position: relative; z-index: 1001; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; background-color: rgba(253, 253, 246, 0.95); box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .logo-group { display: flex; align-items: center; text-decoration: none; }
+        .logo-title { margin-left: 15px; }
+        .logo-title span { display: block; font-family: 'Poppins', sans-serif; font-weight: 700; color: var(--heading-color); line-height: 1.2; }
+        #sub-header-nav { display: none; background-color: var(--primary-color); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+        .sub-header-content { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-start; padding: 1.5rem 2rem; }
+        .sub-header-column h4 { font-family: 'Poppins', sans-serif; color: #fff; font-size: 1.1rem; margin-bottom: 1rem; }
+        .sub-header-column ul { list-style: none; }
+        .sub-header-column li a { display: block; padding: 0.4rem 0; color: #eee; font-weight: 400; text-decoration: none; }
+        .sub-header-column a.cta-link { display: inline-block; background-color: var(--accent-color); color: #fff; padding: 0.75rem 1.5rem; border-radius: 4px; font-weight: 700; margin-top: 1rem; }
+        .mobile-menu-toggle { display: none; background: none; border: none; cursor: pointer; z-index: 1002; }
+        .hamburger-icon { display: block; width: 24px; height: 2px; background-color: var(--primary-color); position: relative; }
+        .hamburger-icon::before, .hamburger-icon::after { content: ''; position: absolute; left: 0; width: 100%; height: 2px; background-color: var(--primary-color); transition: all 0.3s ease; }
+        .hamburger-icon::before { top: -7px; }
+        .hamburger-icon::after { top: 7px; }
+        #mobile-overlay-menu { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1000; background-color: var(--primary-color); transition: opacity 0.3s ease-in-out; opacity: 0; visibility: hidden; }
+        #mobile-overlay-menu.is-active { opacity: 1; visibility: visible; }
+        .mobile-menu-content { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; }
+        .mobile-menu-column { text-align: center; margin-bottom: 2rem; }
+        .page-intro { text-align: center; max-width: 800px; margin: 0 auto 4rem auto; }
+        .cta-box { background-color: #fff; padding: 1.5rem; text-align: center; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.07); margin: 3rem auto; max-width: 800px; }
+        .responsive-table { width: 100%; border-collapse: collapse; margin: 1rem 0; box-shadow: 0 2px 10px rgba(0,0,0,0.07); }
+        .responsive-table thead { background-color: var(--primary-color); color: #fff; }
+        .responsive-table th, .responsive-table td { padding: 12px 15px; text-align: left; }
+        .responsive-table tbody tr { background-color: #fff; border-bottom: 1px solid var(--border-color); }
+        .responsive-table .contact-details span { display: block; }
+        .section-note { text-align: center; margin: -1rem auto 2rem auto; font-style: italic; max-width: 800px; }
+        footer { text-align: center; padding: 2rem; border-top: 1px solid var(--border-color); background-color: var(--bg-color); }
+        .footer-quote { margin-bottom: 1.5rem; font-style: italic; max-width: 600px; margin-left: auto; margin-right: auto; }
+        @media (max-width: 550px) {
+            .mobile-menu-toggle { display: block; }
+            .mobile-menu-toggle.is-active .hamburger-icon { background-color: transparent; }
+            .mobile-menu-toggle.is-active .hamburger-icon::before { top: 0; transform: rotate(45deg); }
+            .mobile-menu-toggle.is-active .hamburger-icon::after { top: 0; transform: rotate(-45deg); }
+            .responsive-table thead { display: none; }
+            .responsive-table, .responsive-table tbody, .responsive-table tr, .responsive-table td { display: block; width: 100%; }
+            .responsive-table tr { margin-bottom: 1rem; border: 1px solid var(--border-color); }
+            .responsive-table td { text-align: right; padding-left: 50%; position: relative; border-bottom: 1px solid var(--border-color); }
+            .responsive-table td::before { content: attr(data-label); position: absolute; left: 15px; width: calc(50% - 30px); text-align: left; font-weight: bold; color: var(--primary-color); }
+        }
+        @media (min-width: 551px) { #sub-header-nav { display: block; } }
+    </style>
+</head>
+<body>
+    <div class="header-container">
+        <header class="main-header">
+            <a href="index.html" class="logo-group">
+                <svg width="60" height="60" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="headerGradient" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#0A3D62;" /><stop offset="100%" style="stop-color:#00A896;" /></linearGradient></defs><polygon points="50,25 71.65,37.5 71.65,62.5 50,75 28.35,62.5 28.35,37.5" fill="none" stroke="url(#headerGradient)" stroke-width="6" /><path d="M 25 25 A 35 35, 0, 0, 1, 75 25" fill="none" stroke="#0A3D62" stroke-width="5" stroke-linecap="round" /><path d="M 25 75 A 35 35, 0, 0, 0, 75 75" fill="none" stroke="#00A896" stroke-width="5" stroke-linecap="round" /></svg>
+                <div class="logo-title"><span class="main-name">Bellwether</span><span class="sub-name">Energy & Technology Forum</span></div>
+            </a>
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Menu"><span class="hamburger-icon"></span></button>
+        </header>
+        <nav id="sub-header-nav">
+            <div class="sub-header-content">
+                <div class="sub-header-column"><h4>About</h4><ul><li><a href="index.html">Home</a></li><li><a href="join.html">Our Team</a></li></ul></div>
+                <div class="sub-header-column"><h4>Our Work</h4><ul><li><a href="knowledge.html">Invest In Knowledge</a></li><li><a href="relationships.html">Develop Relationships</a></li><li><a href="experience.html">Build Experience</a></li></ul></div>
+                <div class="sub-header-column"><h4>Get Involved</h4><ul><li><a href="start-local.html">Start Local</a></li><li><a href="materials.html" class="sub-page">- Info Materials</a></li></ul></div>
+                <div class="sub-header-column"><h4>&nbsp;</h4><ul><li><a href="join.html" class="cta-link">Join Now</a></li></ul></div>
+            </div>
+        </nav>
+    </div>
+    <div id="mobile-overlay-menu">(Mobile menu content...)</div>
+    <main>
+        <section class="container">
+            <div class="page-intro">
+                <h1>Develop Relationships</h1>
+                <p>To achieve our goals, we build and invest in relationships. We invite you to benefit from the following list of companies and associations so you can do the same.</p>
+            </div>
+            <section>
+                <h3>AI Companies in Texas</h3>
+                <table class="responsive-table">
+                    <thead><tr><th>Organization</th><th>Description</th><th>Contact</th></tr></thead>
+                    <tbody>
+                        <tr><td data-label="Organization">Apptunix</td><td data-label="Description">Customized AI-powered software solutions.</td><td data-label="Contact"><div class="contact-details"><span>Austin, TX</span><span><a href="mailto:sales@apptunix.com">sales@apptunix.com</a></span></div></td></tr>
+                        <tr><td data-label="Organization">Tavus</td><td data-label="Description">Conversational video interface and AI human models.</td><td data-label="Contact"><div class="contact-details"><span>Houston, TX</span><span><a href="https://www.tavus.io/demo" target="_blank">Request a Demo</a></span></div></td></tr>
+                        <tr><td data-label="Organization">DeepIQ</td><td data-label="Description">AI platform for industrial data operations.</td><td data-label="Contact"><div class="contact-details"><span>Houston, TX</span><span><a href="mailto:info@deepiq.com">info@deepiq.com</a></span></div></td></tr>
+                    </tbody>
+                </table>
+            </section>
+            <section>
+                <h3>Nuclear Fission Companies in Texas</h3>
+                 <table class="responsive-table">
+                    <thead><tr><th>Organization</th><th>Description</th><th>Contact</th></tr></thead>
+                    <tbody>
+                        <tr><td data-label="Organization">Texas Thorium</td><td data-label="Description">Building a thorium reactor.</td><td data-label="Contact"><div class="contact-details"><span><a href="https://www.txthorium.com/" target="_blank">Website</a></span><span><a href="mailto:info@texasthorium.com">info@texasthorium.com</a></span></div></td></tr>
+                        <tr><td data-label="Organization">Deep Fission</td><td data-label="Description">Partnering to build a fission reactor.</td><td data-label="Contact"><div class="contact-details"><span><a href="https://deepfission.com/" target="_blank">Website</a></span><span><a href="mailto:contact@deepfission.com">contact@deepfission.com</a></span></div></td></tr>
+                        <tr><td data-label="Organization">Luminant Generation</td><td data-label="Description">Operates two fission reactors in Texas.</td><td data-label="Contact"><div class="contact-details"><span><a href="http://www.luminant.com" target="_blank">Website</a></span><span><a href="tel:214-812-4600">(214) 812-4600</a></span></div></td></tr>
+                        <tr><td data-label="Organization">STP Nuclear Operating Co.</td><td data-label="Description">Runs two operating fission reactors.</td><td data-label="Contact"><div class="contact-details"><span><a href="http://www.stpnoc.com" target="_blank">Website</a></span><span><a href="tel:361-972-3611">(361) 972-3611</a></span></div></td></tr>
+                        <tr><td data-label="Organization">Aalo Atomics</td><td data-label="Description">Focused on advanced nuclear SMR plants.</td><td data-label="Contact"><div class="contact-details"><span><a href="http://www.aalo.com" target="_blank">Website</a></span><span><a href="mailto:hello@aalo.com">hello@aalo.com</a></span></div></td></tr>
+                    </tbody>
+                </table>
+            </section>
+            <section>
+                <h3>Fusion Energy Companies</h3>
+                <p class="section-note">None in Texas (yet!). We will work to change this. Here are some leaders in the field:</p>
+                 <table class="responsive-table">
+                    <thead><tr><th>Organization</th><th>Location</th><th>Website</th></tr></thead>
+                    <tbody>
+                        <tr><td data-label="Organization">Helion Energy</td><td data-label="Location">Washington</td><td data-label="Website"><a href="https://www.helionenergy.com/" target="_blank">www.helionenergy.com</a></td></tr>
+                        <tr><td data-label="Organization">Commonwealth Fusion Systems</td><td data-label="Location">Virginia</td><td data-label="Website"><a href="https://cfs.energy/" target="_blank">cfs.energy</a></td></tr>
+                    </tbody>
+                </table>
+            </section>
+            <section>
+                <h3>Partners in Nuclear and AI</h3>
+                <table class="responsive-table">
+                    <thead><tr><th>Organization</th><th>Focus</th><th>Contact</th></tr></thead>
+                    <tbody>
+                         <tr><td data-label="Organization">Texas Nuclear Caucus</td><td data-label="Focus">Positions Texas as a leader in nuclear technology.</td><td data-label="Contact"><div class="contact-details"><span><a href="https://texasnuclearcaucus.org/" target="_blank">Website</a></span></div></td></tr>
+                         <tr><td data-label="Organization">Texas AI Association</td><td data-label="Focus">State-level group for AI governance and innovation.</td><td data-label="Contact"><div class="contact-details"><span><a href="https://texasaiassociation.org" target="_blank">Website</a></span><span><a href="mailto:info@texasaiassociation.org">info@texasaiassociation.org</a></span></div></td></tr>
+                         <tr><td data-label="Organization">Nuclearn</td><td data-label="Focus">Advocates for nuclear energy to power AI.</td><td data-label="Contact"><div class="contact-details"><span><a href="https://nuclearn.ai/" target="_blank">Website</a></span></div></td></tr>
+                    </tbody>
+                </table>
+            </section>
+            <div class="cta-box"><p>We update this page weekly. If you have opportunities or helpful links to share, email us at: <a href="mailto:theodore.samuel.07@gmail.com">theodore.samuel.07@gmail.com</a></p></div>
+        </section>
+    </main>
+    <footer>
+        <div class="container footer-quote">“The instant I received the order, I sprang on my horse and then my ‘crowded hour’ began.”<br>–Theodore Roosevelt</div>
+        <p>&copy; <span id="current-year"></span> Bellwether Energy and Technology Forum. All Rights Reserved.</p>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('mobile-menu-toggle');
+            const mobileMenu = document.getElementById('mobile-overlay-menu');
+            menuToggle.addEventListener('click', () => {
+                menuToggle.classList.toggle('is-active');
+                mobileMenu.classList.toggle('is-active');
+                document.body.classList.toggle('no-scroll');
+            });
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+        });
+    </script>
+</body>
+</html>

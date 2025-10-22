@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Start Local | Bellwether Energy and Technology Forum</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@600;700&display=swap');
+        :root { --bg-color: #FDFDF6; --primary-color: #0A3D62; --accent-color: #00A896; --text-color: #333333; --heading-color: #0A3D62; --border-color: #e0e0e0; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Lato', sans-serif; background-color: var(--bg-color); color: var(--text-color); line-height: 1.7; font-size: 16px; }
+        body.no-scroll { overflow: hidden; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 5rem 2rem; }
+        h1, h2, h3 { font-family: 'Poppins', sans-serif; color: var(--heading-color); font-weight: 700; }
+        h1 { font-size: 3.2rem; line-height: 1.2; text-align: center; }
+        h3 { font-size: 2.2rem; margin-top: 4rem; margin-bottom: 2rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--border-color); }
+        a { color: var(--accent-color); text-decoration: none; font-weight: 600; }
+        a:hover { text-decoration: underline; }
+        .header-container { /* No longer sticky */ }
+        .main-header { position: relative; z-index: 1001; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; background-color: rgba(253, 253, 246, 0.95); box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .logo-group { display: flex; align-items: center; text-decoration: none; }
+        .logo-title { margin-left: 15px; }
+        .logo-title span { display: block; font-family: 'Poppins', sans-serif; font-weight: 700; color: var(--heading-color); line-height: 1.2; }
+        #sub-header-nav { display: none; background-color: var(--primary-color); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+        .sub-header-content { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-start; padding: 1.5rem 2rem; }
+        .sub-header-column h4 { font-family: 'Poppins', sans-serif; color: #fff; font-size: 1.1rem; margin-bottom: 1rem; }
+        .sub-header-column ul { list-style: none; }
+        .sub-header-column li a { display: block; padding: 0.4rem 0; color: #eee; font-weight: 400; text-decoration: none; }
+        .sub-header-column a.cta-link { display: inline-block; background-color: var(--accent-color); color: #fff; padding: 0.75rem 1.5rem; border-radius: 4px; font-weight: 700; margin-top: 1rem; }
+        .mobile-menu-toggle { display: none; background: none; border: none; cursor: pointer; z-index: 1002; }
+        .hamburger-icon { display: block; width: 24px; height: 2px; background-color: var(--primary-color); position: relative; }
+        .hamburger-icon::before, .hamburger-icon::after { content: ''; position: absolute; left: 0; width: 100%; height: 2px; background-color: var(--primary-color); transition: all 0.3s ease; }
+        .hamburger-icon::before { top: -7px; }
+        .hamburger-icon::after { top: 7px; }
+        #mobile-overlay-menu { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1000; background-color: var(--primary-color); transition: opacity 0.3s ease-in-out; opacity: 0; visibility: hidden; }
+        #mobile-overlay-menu.is-active { opacity: 1; visibility: visible; }
+        .mobile-menu-content { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; }
+        .mobile-menu-column { text-align: center; margin-bottom: 2rem; }
+        .page-intro { text-align: center; max-width: 800px; margin: 0 auto 2rem auto; }
+        .cta-box { background-color: #fff; padding: 1.5rem; text-align: center; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.07); margin: 2rem auto; max-width: 800px; }
+        .content-section { max-width: 800px; margin: 2rem auto; }
+        .action-list { list-style: none; padding-left: 0; }
+        .action-list li { background-color: #fff; margin-bottom: 1rem; padding: 1rem 1.5rem; border-left: 4px solid var(--accent-color); border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        .testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+        .testimonial-item { background-color: #fff; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.07); border-top: 4px solid var(--primary-color); }
+        .testimonial-item p { font-style: italic; margin-bottom: 1rem; }
+        .testimonial-item cite { font-style: normal; font-weight: 700; color: var(--primary-color); text-align: right; display: block; }
+        footer { text-align: center; padding: 2rem; border-top: 1px solid var(--border-color); background-color: var(--bg-color); }
+        .footer-quote { margin-bottom: 1.5rem; font-style: italic; max-width: 600px; margin-left: auto; margin-right: auto; }
+        @media (max-width: 550px) {
+            .mobile-menu-toggle { display: block; }
+            .mobile-menu-toggle.is-active .hamburger-icon { background-color: transparent; }
+            .mobile-menu-toggle.is-active .hamburger-icon::before { top: 0; transform: rotate(45deg); }
+            .mobile-menu-toggle.is-active .hamburger-icon::after { top: 0; transform: rotate(-45deg); }
+        }
+        @media (min-width: 551px) { #sub-header-nav { display: block; } }
+    </style>
+</head>
+<body>
+    <div class="header-container">
+        <header class="main-header">
+            <a href="index.html" class="logo-group">
+                <svg width="60" height="60" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="headerGradient" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#0A3D62;" /><stop offset="100%" style="stop-color:#00A896;" /></linearGradient></defs><polygon points="50,25 71.65,37.5 71.65,62.5 50,75 28.35,62.5 28.35,37.5" fill="none" stroke="url(#headerGradient)" stroke-width="6" /><path d="M 25 25 A 35 35, 0, 0, 1, 75 25" fill="none" stroke="#0A3D62" stroke-width="5" stroke-linecap="round" /><path d="M 25 75 A 35 35, 0, 0, 0, 75 75" fill="none" stroke="#00A896" stroke-width="5" stroke-linecap="round" /></svg>
+                <div class="logo-title"><span class="main-name">Bellwether</span><span class="sub-name">Energy & Technology Forum</span></div>
+            </a>
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Menu"><span class="hamburger-icon"></span></button>
+        </header>
+        <nav id="sub-header-nav">
+            <div class="sub-header-content">
+                <div class="sub-header-column"><h4>About</h4><ul><li><a href="index.html">Home</a></li><li><a href="join.html">Our Team</a></li></ul></div>
+                <div class="sub-header-column"><h4>Our Work</h4><ul><li><a href="knowledge.html">Invest In Knowledge</a></li><li><a href="relationships.html">Develop Relationships</a></li><li><a href="experience.html">Build Experience</a></li></ul></div>
+                <div class="sub-header-column"><h4>Get Involved</h4><ul><li><a href="start-local.html">Start Local</a></li><li><a href="materials.html" class="sub-page">- Info Materials</a></li></ul></div>
+                <div class="sub-header-column"><h4>&nbsp;</h4><ul><li><a href="join.html" class="cta-link">Join Now</a></li></ul></div>
+            </div>
+        </nav>
+    </div>
+    <div id="mobile-overlay-menu">(Mobile menu content...)</div>
+    <main>
+        <section class="container">
+            <div class="page-intro">
+                <h1>Start Local</h1>
+                <p>To achieve our goals, we start local. We invite you to benefit from the following club forms to start your own. We are here to help you accomplish our mission of making Texas #1 in limitless sustainable energy and accessible generative AI.</p>
+            </div>
+            <div class="cta-box">
+                <p><strong>Want to get involved?</strong> Look at all of the materials we provide, and if you have questions or suggestions reach out to <a href="mailto:theodore.samuel.07@gmail.com">Theodore</a> or <a href="mailto:katefambrough@icloud.com">Kate</a>.</p>
+            </div>
+            <div class="content-section">
+                <p>We equip student leaders to start STEM clubs at their school/co-op/education organization/community. By starting a club you are joining a community of leaders across the state. We especially welcome and encourage rural community student leaders because we want them to expand to other students access to speakers and resources.</p>
+                <p>This is a grassroots initiative that will directly support goals for economic growth and energy independence by instilling technological literacy and practical leadership in our high-potential youth.</p>
+            </div>
+            <section>
+                <h3>Start Your Own Club</h3>
+                 <ul class="action-list">
+                    <li>Use our template–Letter to your Administrator–or draft your own.</li>
+                    <li>Use our <a href="materials.html">Q&A: Informational Sheet of the Club</a></li>
+                    <li>Look at our sample Promotional Materials, or design your own.</li>
+                    <li>You can plug into one of our events already planned (zoom speakers).</li>
+                    <li>You can find a school close to yours and team up on an event.</li>
+                    <li>You can use our resources to find speakers.</li>
+                </ul>
+            </section>
+            <section>
+                <h3>Want to hear how other teens have already benefited?</h3>
+                <div class="testimonial-grid">
+                    <blockquote class="testimonial-item"><p>"As someone who hopes to go into International Relations, the Bellwether trip to the UN General Assembly was a fantastic opportunity to speak with UN officials and world leaders."</p><cite>– Hazel</cite></blockquote>
+                    <blockquote class="testimonial-item"><p>"The CEO of StarPower, Christopher Craddock, told us all about the role of nuclear fusion in getting to outer space... and gave us what amounted to a Masterclass on entrepreneurship."</p><cite>– Jaiden</cite></blockquote>
+                    <blockquote class="testimonial-item"><p>"The event with President Elbegdorj really opened my eyes... He said that 'fusion energy will reshape the next generation’s career entirely.' When he said the next generation, he meant me."</p><cite>– Gabe</cite></blockquote>
+                    <blockquote class="testimonial-item"><p>"Bellwether provided me with the unique opportunity of meeting Ambassador Sichan Siv. Learning through the lives of others was so enriching."</p><cite>– Zachary</cite></blockquote>
+                </div>
+            </section>
+        </section>
+    </main>
+    <footer>
+        <div class="container footer-quote">“The instant I received the order, I sprang on my horse and then my ‘crowded hour’ began.”<br>–Theodore Roosevelt</div>
+        <p>&copy; <span id="current-year"></span> Bellwether Energy and Technology Forum. All Rights Reserved.</p>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('mobile-menu-toggle');
+            const mobileMenu = document.getElementById('mobile-overlay-menu');
+            menuToggle.addEventListener('click', () => {
+                menuToggle.classList.toggle('is-active');
+                mobileMenu.classList.toggle('is-active');
+                document.body.classList.toggle('no-scroll');
+            });
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+        });
+    </script>
+</body>
+</html>
