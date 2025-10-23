@@ -9,9 +9,10 @@
         :root { --bg-color: #FDFDF6; --primary-color: #0A3D62; --accent-color: #00A896; --text-color: #333333; --heading-color: #0A3D62; --border-color: #e0e0e0; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-        body { font-family: 'Lato', sans-serif; background-color: var(--bg-color); color: var(--text-color); line-height: 1.7; font-size: 16px; }
+        body { font-family: 'Lato', sans-serif; background-color: var(--bg-color); color: var(--text-color); line-height: 1.7; font-size: 19px; }
         body.no-scroll { overflow: hidden; }
         .container { max-width: 1100px; margin: 0 auto; padding: 5rem 2rem; }
+        p { font-size: 1.1rem; margin-bottom: 1rem; }
         h1, h2, h3 { font-family: 'Poppins', sans-serif; color: var(--heading-color); font-weight: 700; }
         h1 { font-size: 3.2rem; line-height: 1.2; text-align: center; }
         h2 { font-size: 2.5rem; text-align: center; margin-bottom: 3rem; position: relative; padding-bottom: 1rem; }
@@ -28,7 +29,9 @@
         .sub-header-column h4 { font-family: 'Poppins', sans-serif; color: #fff; font-size: 1.1rem; margin-bottom: 1rem; }
         .sub-header-column ul { list-style: none; }
         .sub-header-column li a { display: block; padding: 0.4rem 0; color: #eee; font-weight: 400; text-decoration: none; }
+        .sub-header-column a:hover { color: var(--accent-color); }
         .sub-header-column a.cta-link { display: inline-block; background-color: var(--accent-color); color: #fff; padding: 0.75rem 1.5rem; border-radius: 4px; font-weight: 700; margin-top: 1rem; }
+        .sub-header-column a.cta-link:hover { background-color: #00c4b0; text-decoration: none; }
         .mobile-menu-toggle { display: none; background: none; border: none; cursor: pointer; z-index: 1002; }
         .hamburger-icon { display: block; width: 24px; height: 2px; background-color: var(--primary-color); position: relative; }
         .hamburger-icon::before, .hamburger-icon::after { content: ''; position: absolute; left: 0; width: 100%; height: 2px; background-color: var(--primary-color); transition: all 0.3s ease; }
@@ -38,36 +41,22 @@
         #mobile-overlay-menu.is-active { opacity: 1; visibility: visible; }
         .mobile-menu-content { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; }
         .mobile-menu-column { text-align: center; margin-bottom: 2rem; }
-        
+        .mobile-menu-column h4 { color: #fff; }
+        .mobile-menu-column ul { list-style: none; }
+        .mobile-menu-column li a { color: #eee; font-size: 1.2rem; line-height: 2.5; }
         .page-intro { text-align: center; max-width: 800px; margin: 0 auto 4rem auto; }
         .cta-box { background-color: #fff; padding: 2rem; text-align: center; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.07); margin: 2rem 0; }
-        
         .profile-section { max-width: 900px; margin: 0 auto; }
-        .profile-item {
-            display: grid;
-            grid-template-columns: 1fr 1.5fr; /* Always Image Left, Text Right */
-            gap: 3rem;
-            align-items: center;
-            margin-bottom: 5rem;
-        }
+        .profile-item { display: grid; grid-template-columns: 1fr 1.5fr; gap: 3rem; align-items: center; margin-bottom: 5rem; }
         .profile-item:last-of-type { margin-bottom: 0; }
-        .profile-image img {
-            width: 100%;
-            height: auto;
-            aspect-ratio: 1 / 1;
-            object-fit: cover;
-            object-position: center;
-            border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
+        .profile-image img { width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; object-position: center; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
         .profile-bio h3 { font-size: 2rem; margin-bottom: 0.5rem; }
         footer { text-align: center; padding: 2rem; border-top: 1px solid var(--border-color); background-color: var(--bg-color); }
         .footer-quote { margin-bottom: 1.5rem; font-style: italic; max-width: 600px; margin-left: auto; margin-right: auto; }
-
-        @media (max-width: 768px) {
-            .profile-item { grid-template-columns: 1fr; gap: 1.5rem; text-align: left; }
+        @media (max-width: 991px) {
+            .profile-item { grid-template-columns: 1fr; gap: 1.5rem; }
+            .profile-bio { text-align: center; }
             .profile-image { max-width: 300px; margin: 0 auto; }
-            .profile-bio h3 { text-align: center; }
         }
         @media (max-width: 550px) {
             .mobile-menu-toggle { display: block; }
@@ -91,12 +80,18 @@
             <div class="sub-header-content">
                 <div class="sub-header-column"><h4>About</h4><ul><li><a href="index.html">Home</a></li><li><a href="join.html">Our Team</a></li></ul></div>
                 <div class="sub-header-column"><h4>Our Work</h4><ul><li><a href="knowledge.html">Invest In Knowledge</a></li><li><a href="relationships.html">Develop Relationships</a></li><li><a href="experience.html">Build Experience</a></li></ul></div>
-                <div class="sub-header-column"><h4>Get Involved</h4><ul><li><a href="start-local.html">Start Local</a></li><li><a href="materials.html" class="sub-page">- Info Materials</a></li></ul></div>
+                <div class="sub-header-column"><h4>Get Involved</h4><ul><li><a href="start-local.html">Start Local</a></li><li><a href="materials.html" class="sub-page">- Materials</a></li></ul></div>
                 <div class="sub-header-column"><h4>&nbsp;</h4><ul><li><a href="join.html" class="cta-link">Join Now</a></li></ul></div>
             </div>
         </nav>
     </div>
-    <div id="mobile-overlay-menu">(Mobile menu content...)</div>
+    <div id="mobile-overlay-menu">
+        <div class="mobile-menu-content">
+             <div class="mobile-menu-column"><h4>About</h4><ul><li><a href="index.html">Home</a></li><li><a href="join.html">Our Team</a></li></ul></div>
+            <div class="mobile-menu-column"><h4>Our Work</h4><ul><li><a href="knowledge.html">Invest In Knowledge</a></li><li><a href="relationships.html">Develop Relationships</a></li><li><a href="experience.html">Build Experience</a></li></ul></div>
+            <div class="mobile-menu-column"><h4>Get Involved</h4><ul><li><a href="start-local.html">Start Local</a></li><li><a href="materials.html" class="sub-page">- Materials</a></li><li><a href="join.html" class="cta-link">Join Now</a></li></ul></div>
+        </div>
+    </div>
     <main>
         <section class="container">
             <div class="page-intro"><h1>WE ARE UNITED: Students Leading on Sustainable Energy and AI</h1><p>We live in an age of technological, scientific, and cultural innovation. Whether it be through nuclear fusion breakthroughs, accessible energy expansion, AI training educators in refugee camps, or blockchain increasing the security and effectiveness of aid, innovation is at the forefront of solving the world’s most pressing issues. We seek to equip ourselves and peers in our generation with the knowledge and connections necessary to tackle the world’s most pressing issues. We start at home–in our communities and in our state, while expanding our relationships nationally and globally.</p></div>
