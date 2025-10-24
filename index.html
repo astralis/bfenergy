@@ -32,13 +32,12 @@
         .sub-header-column a.cta-link { display: inline-block; background-color: var(--accent-color); color: #fff; padding: 0.75rem 1.5rem; border-radius: 4px; font-weight: 700; margin-top: 1rem; }
         .sub-header-column a.cta-link:hover { background-color: #00c4b0; text-decoration: none; }
         .mobile-menu-toggle { display: none; background: none; border: none; cursor: pointer; z-index: 1002; }
-        .hamburger-icon { display: block; width: 24px; height: 2px; background-color: var(--primary-color); position: relative; }
+        .hamburger-icon { display: block; width: 24px; height: 2px; background-color: var(--primary-color); position: relative; transition: background-color 0.3s ease; }
         .hamburger-icon::before, .hamburger-icon::after { content: ''; position: absolute; left: 0; width: 100%; height: 2px; background-color: var(--primary-color); transition: all 0.3s ease; }
         .hamburger-icon::before { top: -7px; }
         .hamburger-icon::after { top: 7px; }
-        #mobile-overlay-menu { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1000; background-color: var(--primary-color); transition: opacity 0.3s ease-in-out; opacity: 0; visibility: hidden; }
-        #mobile-overlay-menu.is-active { opacity: 1; visibility: visible; }
-        .mobile-menu-content { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; }
+        #mobile-overlay-menu { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1000; background-color: var(--primary-color); display: flex; flex-direction: column; align-items: center; justify-content: center; transform: translateX(-100%); transition: transform 0.3s ease-in-out; }
+        #mobile-overlay-menu.is-active { transform: translateX(0); }
         .mobile-menu-column { text-align: center; margin-bottom: 2rem; }
         .mobile-menu-column h4 { color: #fff; }
         .mobile-menu-column ul { list-style: none; }
@@ -91,7 +90,7 @@
             <div class="sub-header-content">
                 <div class="sub-header-column"><h4>About</h4><ul><li><a href="index.html">Home</a></li><li><a href="join.html">Our Team</a></li></ul></div>
                 <div class="sub-header-column"><h4>Our Work</h4><ul><li><a href="knowledge.html">Invest In Knowledge</a></li><li><a href="relationships.html">Develop Relationships</a></li><li><a href="experience.html">Build Experience</a></li></ul></div>
-                <div class="sub-header-column"><h4>Get Involved</h4><ul><li><a href="start-local.html">Start Local</a></li><li><a href="materials.html" class="sub-page">- Info Materials</a></li></ul></div>
+                <div class="sub-header-column"><h4>Get Involved</h4><ul><li><a href="start-local.html">Start Local</a></li><li><a href="materials.html" class="sub-page">- Materials</a></li></ul></div>
                 <div class="sub-header-column"><h4>&nbsp;</h4><ul><li><a href="join.html" class="cta-link">Join Now</a></li></ul></div>
             </div>
         </nav>
@@ -99,8 +98,8 @@
     <div id="mobile-overlay-menu">
         <div class="mobile-menu-content">
              <div class="mobile-menu-column"><h4>About</h4><ul><li><a href="index.html">Home</a></li><li><a href="join.html">Our Team</a></li></ul></div>
-            <div class="mobile-menu-column"><h4>Our Work</h4><ul><li><a href="knowledge.html">Invest in Knowledge</a></li><li><a href="relationships.html">Develop Relationships</a></li><li><a href="experience.html">Build Experience</a></li></ul></div>
-            <div class="mobile-menu-column"><h4>Get Involved</h4><ul><li><a href="start-local.html">Start Local</a></li><li><a href="materials.html" class="sub-page">- Info Materials</a></li><li><a href="join.html" class="cta-link">Join Now</a></li></ul></div>
+            <div class="mobile-menu-column"><h4>Our Work</h4><ul><li><a href="knowledge.html">Invest In Knowledge</a></li><li><a href="relationships.html">Develop Relationships</a></li><li><a href="experience.html">Build Experience</a></li></ul></div>
+            <div class="mobile-menu-column"><h4>Get Involved</h4><ul><li><a href="start-local.html">Start Local</a></li><li><a href="materials.html" class="sub-page">- Materials</a></li><li><a href="join.html" class="cta-link">Join Now</a></li></ul></div>
         </div>
     </div>
     <main>
