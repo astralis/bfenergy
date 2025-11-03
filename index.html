@@ -75,9 +75,56 @@
         @media (max-width: 991px) { #mission { background-attachment: scroll; } .value-content, .value-section:nth-of-type(even) .value-content { grid-template-columns: 1fr; } .value-text { text-align: center; } .value-giant-number { position: static; transform: none; font-size: 6rem; text-align: center; } .hero-grid, .event-item, .event-item:nth-child(even) { grid-template-columns: 1fr; text-align: center; } .event-image-container { margin-bottom: 1rem; } }
         @media (max-width: 550px) { .mobile-menu-toggle { display: block; } .mobile-menu-toggle.is-active .hamburger-icon { background-color: transparent; } .mobile-menu-toggle.is-active .hamburger-icon::before { top: 0; transform: rotate(45deg); } .mobile-menu-toggle.is-active .hamburger-icon::after { top: 0; transform: rotate(-45deg); } }
         @media (min-width: 551px) { #sub-header-nav { display: block; } }
+/* --- UPCOMING EVENTS BANNER --- */
+#upcoming-events-banner {
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 0.75rem 2rem;
+    text-align: center;
+}
+.banner-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+.banner-content p {
+    margin: 0;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+.banner-button {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: #fff;
+    padding: 0.5rem 1.5rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: background-color 0.3s ease;
+}
+.banner-button:hover {
+    background-color: #00c4b0;
+    text-decoration: none;
+}
+@media (max-width: 768px) {
+    .banner-content {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
     </style>
 </head>
 <body>
+    <!-- START: Upcoming Events Banner -->
+    <div id="upcoming-events-banner">
+        <div class="banner-content">
+            <p>See Our Upcoming Conferences and Events!</p>
+            <a href="https://docs.google.com/document/d/18MwUignj3gkninrVYRD0zB0pWNF3lJDXHpBKINaLZyk/edit?usp=sharing" class="banner-button" target="_blank" rel="noopener noreferrer">View Now</a>
+        </div>
+    </div>
+    <!-- END: Upcoming Events Banner -->
     <div class="header-container">
         <header class="main-header">
             <a href="index.html" class="logo-group">
