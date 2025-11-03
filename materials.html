@@ -54,9 +54,56 @@
             .mobile-menu-toggle.is-active .hamburger-icon::after { top: 0; transform: rotate(-45deg); }
         }
         @media (min-width: 551px) { #sub-header-nav { display: block; } }
+        /* --- UPCOMING EVENTS BANNER --- */
+#upcoming-events-banner {
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 0.75rem 2rem;
+    text-align: center;
+}
+.banner-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+.banner-content p {
+    margin: 0;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+.banner-button {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: #fff;
+    padding: 0.5rem 1.5rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: background-color 0.3s ease;
+}
+.banner-button:hover {
+    background-color: #00c4b0;
+    text-decoration: none;
+}
+@media (max-width: 768px) {
+    .banner-content {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
     </style>
 </head>
 <body>
+    <!-- START: Upcoming Events Banner -->
+<div id="upcoming-events-banner">
+    <div class="banner-content">
+        <p>See Our Upcoming Conferences and Events!</p>
+        <a href="https://docs.google.com/document/d/18MwUignj3gkninrVYRD0zB0pWNF3lJDXHpBKINaLZyk/edit?usp=sharing" class="banner-button" target="_blank" rel="noopener noreferrer">View Now</a>
+    </div>
+</div>
+<!-- END: Upcoming Events Banner -->
     <div class="header-container">
         <header class="main-header">
             <a href="index.html" class="logo-group">
@@ -69,7 +116,7 @@
             <div class="sub-header-content">
                 <div class="sub-header-column"><h4>About</h4><ul><li><a href="index.html">Home</a></li><li><a href="join.html">Our Team</a></li></ul></div>
                 <div class="sub-header-column"><h4>Our Work</h4><ul><li><a href="knowledge.html">Invest In Knowledge</a></li><li><a href="relationships.html">Develop Relationships</a></li><li><a href="experience.html">Build Experience</a></li></ul></div>
-                <div class="sub-header-column"><h4>Get Involved</h4><ul><li><a href="start-local.html">Start Local</a></li><li><a href="materials.html" class="sub-page">- Materials</a></li></ul></div>
+                <div class="sub-header-column"><h4>Get Involved</h4><ul><li><a href="https://docs.google.com/document/d/18MwUignj3gkninrVYRD0zB0pWNF3lJDXHpBKINaLZyk/edit?usp=sharing">Upcoming Events</a></li><li><a href="start-local.html">Start Local</a></li><li><a href="materials.html" class="sub-page">- Materials</a></li></ul></div>
                 <div class="sub-header-column"><h4>&nbsp;</h4><ul><li><a href="join.html" class="cta-link">Join Now</a></li></ul></div>
             </div>
         </nav>
